@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievers' Corner Inquiry Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="wfCanvas"></canvas>
+<div class="form-container">
+    <div class="header">
+        <h1>Achievers' Corner</h1>
+        <h2>Inquiry Form</h2>
+        <p class="tagline">Your visit may be the key to a brighter future in the world of technology.</p>
+    </div>
+    <form id="inquiryForm">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div class="form-group">
+            <label for="todayDate">Date:</label>
+            <input type="date" id="todayDate" name="todayDate" required>
+        </div>
+        <div class="form-group">
+            <label for="phone1">Phone:</label>
+            <input type="tel" id="phone1" name="phone1" pattern="[0-9]{4,11}" placeholder="03XX..." required>
+        </div>
+        <div class="form-group">
+            <label for="highestDegree">Your Highest Degree:</label>
+            <input type="text" id="highestDegree" name="highestDegree" required>
+        </div>
+
+        <fieldset>
+            <legend>Your Computer Skills Are:</legend>
+            <div class="radio-options">
+                <input type="radio" id="skillNothing" name="computerSkills" value="Nothing" required>
+                <label class="radio-label" for="skillNothing">Nothing</label>
+                <input type="radio" id="skillBeginner" name="computerSkills" value="Beginner">
+                <label class="radio-label" for="skillBeginner">Beginner</label>
+                <input type="radio" id="skillIntermediate" name="computerSkills" value="Intermediate">
+                <label class="radio-label" for="skillIntermediate">Intermediate</label>
+                <input type="radio" id="skillAdvance" name="computerSkills" value="Advance">
+                <label class="radio-label" for="skillAdvance">Advance</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Employment Status:</legend>
+            <div class="radio-options">
+                <input type="radio" id="statusFullTime" name="employmentStatus" value="Full-time" required>
+                <label class="radio-label" for="statusFullTime">Full-time</label>
+                <input type="radio" id="statusPartTime" name="employmentStatus" value="Part-time">
+                <label class="radio-label" for="statusPartTime">Part-time</label>
+                <input type="radio" id="statusUnemployed" name="employmentStatus" value="Unemployed">
+                <label class="radio-label" for="statusUnemployed">Unemployed</label>
+                <input type="radio" id="statusStudent" name="employmentStatus" value="Student">
+                <label class="radio-label" for="statusStudent">Student</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Marital Status:</legend>
+            <div class="radio-options">
+                <input type="radio" id="statusSingle" name="maritalStatus" value="Single" required>
+                <label class="radio-label" for="statusSingle">Single</label>
+                <input type="radio" id="statusMarried" name="maritalStatus" value="Married">
+                <label class="radio-label" for="statusMarried">Married</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Mind Test:</legend>
+            <div class="radio-options">
+                <label>You are in a race. If you cross (overtake) the person in second place, what position will you be in?</label>
+                <input type="radio" id="mindFirst" name="mindtest" value="First" required>
+                <label class="radio-label" for="mindFirst">First</label>
+                <input type="radio" id="mindSecond" name="mindtest" value="Second">
+                <label class="radio-label" for="mindSecond">Second</label>
+                <input type="radio" id="mindThird" name="mindtest" value="Third">
+                <label class="radio-label" for="mindThird">Third</label>
+                <input type="radio" id="mindFourth" name="mindtest" value="Fourth">
+                <label class="radio-label" for="mindFourth">Fourth</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>How did you come to know about Achievers' Corner?</legend>
+            <div class="radio-options">
+                <input type="radio" id="knowFriends" name="howKnow" value="Friends" required>
+                <label class="radio-label" for="knowFriends">Friends</label>
+                <input type="radio" id="knowStudent" name="howKnow" value="Walking Student">
+                <label class="radio-label" for="knowStudent">Walking Student</label>
+                <input type="radio" id="knowBanners" name="howKnow" value="Banners">
+                <label class="radio-label" for="knowBanners">Banners</label>
+                <input type="radio" id="knowRelative" name="howKnow" value="Relative">
+                <label class="radio-label" for="knowRelative">Relative</label>
+                <input type="radio" id="knowSocialMedia" name="howKnow" value="Social Media">
+                <label class="radio-label" for="knowSocialMedia">Social Media</label>
+                <input type="radio" id="knowOther" name="howKnow" value="Other">
+                <label class="radio-label" for="knowOther">Other</label>
+            </div>
+        </fieldset>
+
+        <button type="submit">Submit Inquiry</button>
+    </form>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h2>Thank You!</h2>
+        <p>Your inquiry has been submitted successfully.</p>
+        <button id="closePopup">Close</button>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
