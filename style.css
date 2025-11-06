@@ -75,6 +75,7 @@ input, select{
     background: rgba(0,0,0,0.2);
     color: var(--text-dark);
     font-size:0.95rem;
+    width: 100%;
     transition: all 0.3s ease;
 }
 input:focus, select:focus{
