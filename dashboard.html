@@ -222,7 +222,7 @@ tbody tr:hover {
                     </tr>
                 </thead>
                 <tbody id="dataTableBody">
-    <tr><td>1</td><td>Ali Khan</td><td>2025-11-07</td><td>03001234567</td><td>Bachelor</td><td>Intermediate</td><td>Full-time</td><td>Single</td></tr>
+    <!-- <tr><td>1</td><td>Ali Khan</td><td>2025-11-07</td><td>03001234567</td><td>Bachelor</td><td>Intermediate</td><td>Full-time</td><td>Single</td></tr>
     <tr><td>2</td><td>Sara Ahmed</td><td>2025-11-06</td><td>03111234567</td><td>Master</td><td>Advance</td><td>Part-time</td><td>Married</td></tr>
     <tr><td>3</td><td>Usman Tariq</td><td>2024-03-15</td><td>03451234567</td><td>Bachelor</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
     <tr><td>4</td><td>Ayesha Malik</td><td>2023-01-25</td><td>03221234567</td><td>Intermediate</td><td>Advance</td><td>Unemployed</td><td>Married</td></tr>
@@ -241,7 +241,7 @@ tbody tr:hover {
     <tr><td>17</td><td>Adnan Yousaf</td><td>2021-09-22</td><td>03473334455</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
     <tr><td>18</td><td>Iqra Saleem</td><td>2021-04-11</td><td>03212223344</td><td>Bachelor</td><td>Intermediate</td><td>Part-time</td><td>Married</td></tr>
     <tr><td>19</td><td>Waleed Hassan</td><td>2020-10-05</td><td>03334455667</td><td>Intermediate</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
-    <tr><td>20</td><td>Mehak Rizvi</td><td>2020-05-29</td><td>03090012345</td><td>Master</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
+    <tr><td>20</td><td>Mehak Rizvi</td><td>2020-05-29</td><td>03090012345</td><td>Master</td><td>Advance</td><td>Full-time</td><td>Married</td></tr> -->
 </tbody>
 
             </table>
@@ -314,5 +314,32 @@ showAllBtn.addEventListener("click", () => {
 updateTotalCount();
 updateNoData();
 </script>
+
+
+<!-- Script to show data from  local Storage -->
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.getElementById("dataTableBody");
+    const inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+
+    tableBody.innerHTML = ""; // clear existing rows
+
+    inquiries.forEach(entry => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${entry.sno}</td>
+            <td>${entry.fullName}</td>
+            <td>${entry.todayDate}</td>
+            <td>${entry.phone}</td>
+            <td>${entry.highestDegree}</td>
+            <td>${entry.computerSkills}</td>
+            <td>${entry.employmentStatus}</td>
+            <td>${entry.maritalStatus}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+});
+
+ </script>
 </body>
 </html>
