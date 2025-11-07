@@ -7,18 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* === Dashboard Styling === */
 :root {
     --accent: #00bcd4;
     --text-light: #b7c8d6;
     --text-dark: #e6f5f4;
-    --radius: 14px;
+    --radius: 12px;
 }
 
 body {
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* ✅ allow scrolling */
+    overflow-y: auto;
     font-family: "Poppins", sans-serif;
     color: var(--text-dark);
     min-height: 100vh;
@@ -29,14 +28,15 @@ body {
     z-index: 2;
     min-height: 100vh;
     display: flex;
-    align-items: center; /* ✅ content starts at top */
+    width: 95%;
+    max-width: 1400px;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 1.5rem 0.5rem;
     box-sizing: border-box;
 }
 
 .dashboard-box {
-    width: 98%;
+    width: 100%;
     max-width: 1200px;
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(10px);
@@ -44,113 +44,123 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     padding: 1rem;
     display: flex;
+    height: fit-content;
     flex-direction: column;
     align-items: center;
 }
 
+/* === Header === */
 .dashboard-header {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
-
 .dashboard-header h1 {
     font-family: "Orbitron", sans-serif;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: var(--accent);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
-
 .dashboard-header p {
     color: var(--text-light);
-    margin-top: 0.3rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
+/* === Filter Row === */
+.filter-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-box {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    height: 50px;
+}
+.filter-box select{
+    background-color: #00acc1;
+    color: #000;
+}
+.filter-box select,
+.filter-box button {
+    width: 100%;
+    padding: 5px;
+    border-radius: var(--radius);
+    border: none;
+    outline: none;
+    font-size: 0.8rem;
+}
+
+.filter-box button {
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.filter-box button:hover {
+    background: #00acc1;
+}
+
+/* === Table === */
 .table-container {
     width: 100%;
     background: rgba(255,255,255,0.07);
-    border-radius: 10px;
+    border-radius: 8px;
     overflow-x: auto;
 }
-
 table {
     width: 100%;
-    text-align: left;
-    font-size: small;
+    text-align: center;
     border-collapse: collapse;
+    font-size: 0.8rem;
 }
-
 thead {
     background: var(--accent);
     color: #000;
-    font-size: small;
-    font-weight: 500;
+    font-weight: 600;
 }
 th, td {
-    padding: 8px;
-    text-align: center;
-    font-size: small;
+    padding: 10px 2px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
 tbody tr:hover {
     background: rgba(255,255,255,0.05);
 }
-
 .no-data {
     text-align: center;
-    padding: 1rem;
+    padding: 0.8rem;
     color: var(--text-light);
-    font-size: small;
+    font-size: 0.75rem;
 }
 
-/* === Responsive Scaling === */
-@media (max-width: 1024px) {
-    .dashboard-box {
-        padding: 1.5rem;
-    }
-    .dashboard-header h1 {
-        font-size: 1.8rem;
-    }
-    th, td {
-        padding: 6px;
-        font-size: small;
-    }
-}
-
+/* === Responsive === */
 @media (max-width: 768px) {
-    .dashboard-header h1 {
-        font-size: 1.5rem;
-    }
-    .dashboard-header p {
-        font-size: 0.9rem;
-    }
-    th, td {
-        padding: 0.6rem;
-        font-size: 0.85rem;
+    .filter-row {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (max-width: 480px) {
-    .dashboard-box {
-        width: 95%;
-        padding: 1rem;
-    }
-    .dashboard-header h1 {
-        font-size: 1.2rem;
-    }
-    .dashboard-header p {
-        font-size: 0.8rem;
-    }
-    th, td {
-        padding: 0.4rem;
-        font-size: 0.75rem;
-    }
-    .no-data {
-        font-size: x-small;
-    }
+    .dashboard-header h1 { font-size: 1.2rem; }
+    .dashboard-header p { font-size: 0.8rem; }
+    .filter-row { grid-template-columns: 1fr; }
+    .filter-box { font-size: 0.75rem; }
+    .filter-box select, .filter-box button { font-size: 0.75rem; padding: 0.35rem; }
+    th, td { font-size: 0.7rem; padding: 0.35rem; }
 }
 </style>
+
 </head>
 <body>
 <canvas id="wfCanvas"></canvas>
@@ -162,32 +172,78 @@ tbody tr:hover {
             <p>📊 Inquiry Data Dashboard</p>
         </div>
 
+        <!-- === Filter Section === -->
+        <div class="filter-row">
+            <div class="filter-box" id="totalBox">Total Students: <strong id="totalCount">0</strong></div>
+            <div class="filter-box">
+                <select id="monthSelect">
+                    <option value="">Select Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <div class="filter-box">
+                <select id="yearSelect">
+                    <option value="">Select Year</option>
+                    <!-- JS will populate -->
+                </select>
+            </div>
+            <div class="filter-box">
+                <button id="filterBtn">Filter</button>
+            </div>
+            <div class="filter-box">
+                <button id="showAllBtn">Show All</button>
+            </div>
+        </div>
+
+        <!-- === Table === -->
         <div class="table-container">
             <table id="dataTable">
                 <thead>
                     <tr>
-                        <th>Sno</th>
-                        <th>Full Name</th>
+                        <th>#</th>
+                        <th>Name</th>
                         <th>Date</th>
                         <th>Phone</th>
-                        <th>Highest Degree</th>
-                        <th>Computer Skill</th>
-                        <th>Employment Status</th>
-                        <th>Marital Status</th>
+                        <th>Degree</th>
+                        <th>Skill</th>
+                        <th>Employment</th>
+                        <th>Marital</th>
                     </tr>
                 </thead>
                 <tbody id="dataTableBody">
-                    <tr><td>1</td><td>Ali Khan</td><td>2025-11-07</td><td>03001234567</td><td>Bachelor</td><td>Intermediate</td><td>Full-time</td><td>Single</td></tr>
-                    <tr><td>2</td><td>Sara Ahmed</td><td>2025-11-06</td><td>03111234567</td><td>Master</td><td>Advance</td><td>Part-time</td><td>Married</td></tr>
-                    <tr><td>3</td><td>Usman Tariq</td><td>2025-11-05</td><td>03451234567</td><td>Bachelor</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
-                    <tr><td>4</td><td>Ayesha Malik</td><td>2025-11-03</td><td>03221234567</td><td>Intermediate</td><td>Advance</td><td>Unemployed</td><td>Married</td></tr>
-                    <tr><td>5</td><td>Bilal Hussain</td><td>2025-11-02</td><td>03071234567</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
-                    <tr><td>6</td><td>Hina Iqbal</td><td>2025-11-04</td><td>03341234567</td><td>Master</td><td>Intermediate</td><td>Full-time</td><td>Married</td></tr>
-                    <tr><td>7</td><td>Ahmad Raza</td><td>2025-11-01</td><td>03151234567</td><td>Bachelor</td><td>Advance</td><td>Part-time</td><td>Single</td></tr>
-                    <tr><td>8</td><td>Sana Fatima</td><td>2025-10-29</td><td>03501234567</td><td>Intermediate</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
-                    <tr><td>9</td><td>Zeeshan Arif</td><td>2025-10-28</td><td>03601234567</td><td>Bachelor</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
-                    <tr><td>10</td><td>Mariam Ali</td><td>2025-10-30</td><td>03701234567</td><td>Master</td><td>Intermediate</td><td>Unemployed</td><td>Single</td></tr>
-                </tbody>
+    <tr><td>1</td><td>Ali Khan</td><td>2025-11-07</td><td>03001234567</td><td>Bachelor</td><td>Intermediate</td><td>Full-time</td><td>Single</td></tr>
+    <tr><td>2</td><td>Sara Ahmed</td><td>2025-11-06</td><td>03111234567</td><td>Master</td><td>Advance</td><td>Part-time</td><td>Married</td></tr>
+    <tr><td>3</td><td>Usman Tariq</td><td>2024-03-15</td><td>03451234567</td><td>Bachelor</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
+    <tr><td>4</td><td>Ayesha Malik</td><td>2023-01-25</td><td>03221234567</td><td>Intermediate</td><td>Advance</td><td>Unemployed</td><td>Married</td></tr>
+    <tr><td>5</td><td>Bilal Hussain</td><td>2022-07-09</td><td>03071234567</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
+    <tr><td>6</td><td>Hina Iqbal</td><td>2022-11-04</td><td>03341234567</td><td>Master</td><td>Intermediate</td><td>Full-time</td><td>Married</td></tr>
+    <tr><td>7</td><td>Imran Qureshi</td><td>2025-08-10</td><td>03082345678</td><td>PhD</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
+    <tr><td>8</td><td>Fatima Noor</td><td>2025-05-02</td><td>03214567890</td><td>Bachelor</td><td>Intermediate</td><td>Student</td><td>Single</td></tr>
+    <tr><td>9</td><td>Kamran Ali</td><td>2024-12-19</td><td>03401239876</td><td>Master</td><td>Advance</td><td>Part-time</td><td>Married</td></tr>
+    <tr><td>10</td><td>Zainab Shaikh</td><td>2024-09-14</td><td>03129874563</td><td>Intermediate</td><td>Beginner</td><td>Unemployed</td><td>Single</td></tr>
+    <tr><td>11</td><td>Ahmad Raza</td><td>2024-05-23</td><td>03051230098</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
+    <tr><td>12</td><td>Maryam Javed</td><td>2023-10-17</td><td>03349876543</td><td>Master</td><td>Intermediate</td><td>Full-time</td><td>Married</td></tr>
+    <tr><td>13</td><td>Rizwan Haider</td><td>2023-07-28</td><td>03082340987</td><td>Bachelor</td><td>Advance</td><td>Part-time</td><td>Single</td></tr>
+    <tr><td>14</td><td>Sadia Khan</td><td>2022-11-19</td><td>03459873210</td><td>Intermediate</td><td>Beginner</td><td>Unemployed</td><td>Married</td></tr>
+    <tr><td>15</td><td>Omar Farooq</td><td>2022-06-08</td><td>03150098765</td><td>Bachelor</td><td>Intermediate</td><td>Student</td><td>Single</td></tr>
+    <tr><td>16</td><td>Laiba Akhtar</td><td>2021-12-30</td><td>03061122334</td><td>Master</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
+    <tr><td>17</td><td>Adnan Yousaf</td><td>2021-09-22</td><td>03473334455</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
+    <tr><td>18</td><td>Iqra Saleem</td><td>2021-04-11</td><td>03212223344</td><td>Bachelor</td><td>Intermediate</td><td>Part-time</td><td>Married</td></tr>
+    <tr><td>19</td><td>Waleed Hassan</td><td>2020-10-05</td><td>03334455667</td><td>Intermediate</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
+    <tr><td>20</td><td>Mehak Rizvi</td><td>2020-05-29</td><td>03090012345</td><td>Master</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
+</tbody>
+
             </table>
             <div class="no-data" id="noDataMsg" style="display:none;">No data yet</div>
         </div>
@@ -196,13 +252,67 @@ tbody tr:hover {
 
 <script src="script.js"></script>
 <script>
-// Hide "No data" if rows exist
 const tableBody = document.getElementById("dataTableBody");
 const noDataMsg = document.getElementById("noDataMsg");
-function updateNoDataMessage() {
-    noDataMsg.style.display = tableBody.children.length === 0 ? "block" : "none";
+const totalCount = document.getElementById("totalCount");
+const monthSelect = document.getElementById("monthSelect");
+const yearSelect = document.getElementById("yearSelect");
+const filterBtn = document.getElementById("filterBtn");
+const showAllBtn = document.getElementById("showAllBtn");
+
+// populate years 2018–2025
+for (let y = 2018; y <= 2025; y++) {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y;
+    yearSelect.appendChild(opt);
 }
-updateNoDataMessage();
+
+// update total students
+function updateTotalCount() {
+    const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row => row.style.display !== "none");
+    totalCount.textContent = visibleRows.length;
+}
+
+// handle no data
+function updateNoData() {
+    const anyVisible = [...tableBody.querySelectorAll("tr")].some(row => row.style.display !== "none");
+    noDataMsg.style.display = anyVisible ? "none" : "block";
+}
+
+// filter logic
+filterBtn.addEventListener("click", () => {
+    const selectedMonth = monthSelect.value;
+    const selectedYear = yearSelect.value;
+    if (!selectedMonth || !selectedYear) {
+        alert("Please select both month and year!");
+        return;
+    }
+
+    [...tableBody.querySelectorAll("tr")].forEach(row => {
+        const dateCell = row.children[2].textContent.trim();
+        const [year, month] = dateCell.split("-");
+        if (year === selectedYear && month === selectedMonth) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+
+    updateTotalCount();
+    updateNoData();
+});
+
+// show all button
+showAllBtn.addEventListener("click", () => {
+    [...tableBody.querySelectorAll("tr")].forEach(row => row.style.display = "");
+    updateTotalCount();
+    updateNoData();
+});
+
+// initial load
+updateTotalCount();
+updateNoData();
 </script>
 </body>
 </html>
