@@ -317,13 +317,16 @@ updateNoData();
 
 
 <!-- Script to show data from  local Storage -->
- <script>
-    document.addEventListener("DOMContentLoaded", () => {
+<script>
+document.addEventListener("DOMContentLoaded", () => {
     const tableBody = document.getElementById("dataTableBody");
-    const inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+    const noDataMsg = document.getElementById("noDataMsg");
+    const totalCount = document.getElementById("totalCount");
 
+    const inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
     tableBody.innerHTML = ""; // clear existing rows
 
+    // populate table
     inquiries.forEach(entry => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -338,8 +341,22 @@ updateNoData();
         `;
         tableBody.appendChild(row);
     });
-});
 
- </script>
+    // ✅ update count & no-data message after loading data
+    const updateTotalCount = () => {
+        const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row => row.style.display !== "none");
+        totalCount.textContent = visibleRows.length;
+    };
+
+    const updateNoData = () => {
+        const anyVisible = [...tableBody.querySelectorAll("tr")].some(row => row.style.display !== "none");
+        noDataMsg.style.display = anyVisible ? "none" : "block";
+    };
+
+    updateTotalCount();
+    updateNoData();
+});
+</script>
+
 </body>
 </html>
