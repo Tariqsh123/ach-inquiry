@@ -116,3 +116,40 @@ closeBtn.addEventListener('click', function(){
     if(dd < 10) dd = '0' + dd;
     form.todayDate.value = `${yyyy}-${mm}-${dd}`;
 });
+
+
+// Floating Admin Panel
+// === Admin Login Overlay ===
+const adminFab = document.getElementById('adminFab');
+const adminOverlay = document.getElementById('adminOverlay');
+const closeAdminOverlay = document.getElementById('closeAdminOverlay');
+const adminForm = document.getElementById('adminLoginForm');
+
+adminFab.addEventListener('click', () => {
+    adminOverlay.classList.add('active');
+});
+
+closeAdminOverlay.addEventListener('click', () => {
+    adminOverlay.classList.remove('active');
+    adminForm.reset();
+});
+
+adminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('adminId').value.trim();
+    const pass = document.getElementById('adminPassword').value.trim();
+
+    if (id === 'admin' && pass === 'admin') {
+        window.location.href = 'dashboard.html';
+    } else {
+        alert('Invalid ID or Password');
+    }
+});
+
+// === Close overlay if clicked outside the login box ===
+adminOverlay.addEventListener('click', (e) => {
+    if (e.target === adminOverlay) {
+        adminOverlay.classList.remove('active');
+        adminForm.reset();
+    }
+});

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Achievers' Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Dashboard Styling === */
+:root {
+    --accent: #00bcd4;
+    --text-light: #b7c8d6;
+    --text-dark: #e6f5f4;
+    --radius: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* ✅ allow scrolling */
+    font-family: "Poppins", sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.dashboard-wrapper {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center; /* ✅ content starts at top */
+    justify-content: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.dashboard-box {
+    width: 98%;
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.dashboard-header p {
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    font-size: 1rem;
+}
+
+.table-container {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    font-size: small;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--accent);
+    color: #000;
+    font-size: small;
+    font-weight: 500;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+    font-size: small;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+tbody tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.no-data {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-light);
+    font-size: small;
+}
+
+/* === Responsive Scaling === */
+@media (max-width: 1024px) {
+    .dashboard-box {
+        padding: 1.5rem;
+    }
+    .dashboard-header h1 {
+        font-size: 1.8rem;
+    }
+    th, td {
+        padding: 6px;
+        font-size: small;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+    }
+    .dashboard-header p {
+        font-size: 0.9rem;
+    }
+    th, td {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-box {
+        width: 95%;
+        padding: 1rem;
+    }
+    .dashboard-header h1 {
+        font-size: 1.2rem;
+    }
+    .dashboard-header p {
+        font-size: 0.8rem;
+    }
+    th, td {
+        padding: 0.4rem;
+        font-size: 0.75rem;
+    }
+    .no-data {
+        font-size: x-small;
+    }
+}
+</style>
+</head>
+<body>
+<canvas id="wfCanvas"></canvas>
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-box">
+        <div class="dashboard-header">
+            <h1>ACHIEVERS CORNER</h1>
+            <p>📊 Inquiry Data Dashboard</p>
+        </div>
+
+        <div class="table-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Full Name</th>
+                        <th>Date</th>
+                        <th>Phone</th>
+                        <th>Highest Degree</th>
+                        <th>Computer Skill</th>
+                        <th>Employment Status</th>
+                        <th>Marital Status</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTableBody">
+                    <tr><td>1</td><td>Ali Khan</td><td>2025-11-07</td><td>03001234567</td><td>Bachelor</td><td>Intermediate</td><td>Full-time</td><td>Single</td></tr>
+                    <tr><td>2</td><td>Sara Ahmed</td><td>2025-11-06</td><td>03111234567</td><td>Master</td><td>Advance</td><td>Part-time</td><td>Married</td></tr>
+                    <tr><td>3</td><td>Usman Tariq</td><td>2025-11-05</td><td>03451234567</td><td>Bachelor</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
+                    <tr><td>4</td><td>Ayesha Malik</td><td>2025-11-03</td><td>03221234567</td><td>Intermediate</td><td>Advance</td><td>Unemployed</td><td>Married</td></tr>
+                    <tr><td>5</td><td>Bilal Hussain</td><td>2025-11-02</td><td>03071234567</td><td>Matric</td><td>Nothing</td><td>Unemployed</td><td>Single</td></tr>
+                    <tr><td>6</td><td>Hina Iqbal</td><td>2025-11-04</td><td>03341234567</td><td>Master</td><td>Intermediate</td><td>Full-time</td><td>Married</td></tr>
+                    <tr><td>7</td><td>Ahmad Raza</td><td>2025-11-01</td><td>03151234567</td><td>Bachelor</td><td>Advance</td><td>Part-time</td><td>Single</td></tr>
+                    <tr><td>8</td><td>Sana Fatima</td><td>2025-10-29</td><td>03501234567</td><td>Intermediate</td><td>Beginner</td><td>Student</td><td>Single</td></tr>
+                    <tr><td>9</td><td>Zeeshan Arif</td><td>2025-10-28</td><td>03601234567</td><td>Bachelor</td><td>Advance</td><td>Full-time</td><td>Married</td></tr>
+                    <tr><td>10</td><td>Mariam Ali</td><td>2025-10-30</td><td>03701234567</td><td>Master</td><td>Intermediate</td><td>Unemployed</td><td>Single</td></tr>
+                </tbody>
+            </table>
+            <div class="no-data" id="noDataMsg" style="display:none;">No data yet</div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// Hide "No data" if rows exist
+const tableBody = document.getElementById("dataTableBody");
+const noDataMsg = document.getElementById("noDataMsg");
+function updateNoDataMessage() {
+    noDataMsg.style.display = tableBody.children.length === 0 ? "block" : "none";
+}
+updateNoDataMessage();
+</script>
+</body>
+</html>

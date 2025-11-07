@@ -104,7 +104,7 @@
             </div>
         </fieldset>
 
-        <button type="submit">Submit Inquiry</button>
+        <button type="submit">Submit</button>
     </form>
 </div>
 
@@ -117,6 +117,35 @@
 </div>
 
 
+<!-- Floating Admin Login Panel -->
+ <!-- Floating Admin Login Button -->
+<div class="admin-fab" id="adminFab" title="Admin Login">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.9v2.5h19.2v-2.5c0-3.3-6.4-4.9-9.6-4.9z"/>
+    </svg>
+</div>
+
+<!-- Admin Login Overlay -->
+<div class="admin-login-overlay" id="adminOverlay">
+    <div class="admin-login-box">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+            <div class="admin-field">
+                <label for="adminId">Admin ID</label>
+                <input type="text" id="adminId" required placeholder="Enter Admin ID">
+            </div>
+            <div class="admin-field">
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" required placeholder="Enter Password">
+            </div>
+            <button type="submit" class="admin-login-btn">Login</button>
+            <button type="button" class="admin-close-btn" id="closeAdminOverlay">Cancel</button>
+        </form>
+    </div>
+</div>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>

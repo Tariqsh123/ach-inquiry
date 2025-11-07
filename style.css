@@ -277,3 +277,175 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     fieldset{grid-column:span 1;}
     button{grid-column:span 1;}
 }
+
+/* Floating Admin Panel */
+/* ---------- Floating Admin Button ---------- */
+.admin-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* box-shadow: 0 4px 12px rgba(0, 188, 212, 0.5); */
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+.admin-fab:hover {
+    transform: scale(1.1);
+    /* box-shadow: 0 6px 16px rgba(0, 188, 212, 0.7); */
+}
+
+/* ---------- Admin Login Overlay ---------- */
+.admin-login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 21, 33, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
+.admin-login-overlay.active {
+    display: flex;
+}
+
+.admin-login-box {
+    background: rgba(0, 188, 212, 0.08);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 35px 45px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    color: var(--text-dark);
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+    animation: fadeIn 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-login-box h2 {
+    color: var(--accent);
+    margin-bottom: 25px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+}
+
+#adminLoginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+}
+
+/* ---- Inputs arranged in columns ---- */
+.admin-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+}
+
+.admin-field label {
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.admin-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.25);
+    color: var(--text-dark);
+    outline: none;
+    font-size: 0.95rem;
+}
+.admin-field input:focus {
+    border-color: var(--accent);
+    background: rgba(0,0,0,0.15);
+}
+
+/* ---- Buttons ---- */
+.admin-login-btn,
+.admin-close-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+.admin-login-btn {
+    background: var(--accent);
+    color: #081521;
+}
+.admin-login-btn:hover {
+    opacity: 0.85;
+}
+.admin-close-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+.admin-close-btn:hover {
+    background: var(--accent);
+    color: #081521;
+}
+
+/* ---- Responsive layout ---- */
+@media (max-width: 768px) {
+    .admin-login-box {
+        padding: 25px 30px;
+        width: 100%;
+        max-width: 360px;
+    }
+    .admin-login-box h2 {
+        font-size: 1.4rem;
+    }
+    .admin-field input {
+        padding: 11px 12px;
+        font-size: 0.9rem;
+    }
+    .admin-login-btn,
+    .admin-close-btn {
+        padding: 11px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-login-box {
+        padding: 20px;
+        max-width: 320px;
+    }
+    .admin-login-box h2 {
+        font-size: 1.25rem;
+    }
+    .admin-field label {
+        font-size: 0.85rem;
+    }
+    .admin-field input {
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
